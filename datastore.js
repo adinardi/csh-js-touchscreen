@@ -1,0 +1,55 @@
+/**
+ * @param {string} username
+ * @param {number} credits
+ * @param {number} admin
+ */
+CSH.User = function(args) {
+  this.username = args.username || args.user || '';
+  this.credits = args.credits || args.balance || 0;
+  this.isadmin = parseInt(args.admin) || 0;
+}
+
+CSH.Machine = function(args) {
+  this.name = args.name;
+  this.displayName = args.displayName;
+  this.numberOfSlots = args.numberOfSlots || args.slots;
+  this.slots = [];
+};
+
+CSH.Machine.prototype.loadSlots = function() {
+  var req = new thetr.Request({
+    url: '/' + touchscreenName + '/' + this.name + '/stats_new/',
+    handler: this.handleLoadSlots,
+    scope: this
+  });
+  req.send();
+}
+
+CSH.Machine.prototype.handleLoadSlots = function(req) {
+  var data = (eval('[' + req.data + ']'))[0];
+  console.log('slot data: ', data);
+  
+  if (data.code == 'fail') {
+    // Some Failure State.
+  } else {
+    for (var iter = 0, slot; slot = data.slots[iter]; iter++) {
+      var s = new CSH.Slot(slot);
+      this.slots[s.slotNum] = s;
+    }
+  }
+  
+  if (this.onupdateslots) {
+    this.onupdateslots();
+  }
+}
+
+CSH.Machine.prototype.getSlots = function() {
+  return this.slots;
+}
+
+CSH.Slot = function(args) {
+  this.name = args.name;
+  this.price = args.price;
+  this.quantity = args.quantity;
+  this.slotNum = args.slotNum;
+};

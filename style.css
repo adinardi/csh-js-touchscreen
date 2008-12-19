@@ -1,0 +1,85 @@
+.button {
+  border: 1px solid black;
+  color: white;
+  background-color: #606;
+}
+.buttonPress {
+  
+}
+
+.buttonDisabled {
+  background-color: #333;
+  color: #bbb;
+  font-style: italic;
+}
+.bottomBar {
+  clear: left;
+}
+.slotout {
+  background-color: red;
+}
+body {
+  height: 570px;
+  width: 790px;
+  /*border: 1px solid black;*/
+  font-family: Helvetica;
+  font-size: .9em;
+  cursor: pointer;
+}
+.topScreenLocation {
+  height: 40px;
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+}
+.middleScreenLocation {
+  height: 478px;
+}
+.bottomScreenLocation {
+  height: 50px;
+}
+.slotImg {
+  float: left;
+  height: 50px;
+  width: 50px;
+}
+
+.slotPrice, .slotQuantity {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-right: 6px;
+  text-align: right;
+}
+
+.slotName {
+  padding-top: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.slotContainer {
+  padding: 2px;
+}
+
+.slotButton {
+   border: 1px solid white; 
+}
+
+.infoPanel {
+  text-align: center;
+}
+
+.bottomButtons, .machineButton {
+  text-align: center;
+  font-size: 1.3em;
+  line-height: 50px;
+}
+
+.machineButton { 
+  line-height: 108px;
+}
+
+.emachineButton {
+  background: transparent;
+  border: none;
+}

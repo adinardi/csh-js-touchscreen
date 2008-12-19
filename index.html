@@ -1,0 +1,53 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script type="text/javascript" src="jscore/base.js"></script>
+  <script type="text/javascript" src="jscore/Request.js"></script>
+  <script type="text/javascript" src="jscore/Event.js"></script>
+  <script type="text/javascript" src="jscore/Loader.js"></script>
+  <script type="text/javascript" src="touchscreen.js"></script>
+  <script type="text/javascript" src="displays.js"></script>
+  <script type="text/javascript" src="screenlayout.js"></script>
+  <script type="text/javascript" src="datastore.js"></script>
+  <script type="text/javascript">
+    var loc = window.location.href;
+    var qloc = loc.indexOf('?');
+    var bloc = loc.indexOf('#');
+    var touchscreenName;
+    if (bloc > -1) {
+      touchscreenName = loc.substr(qloc + 1, bloc - qloc - 1);
+    } else {
+      touchscreenName = loc.substr(qloc + 1);
+    }
+    //var touchscreenName = 'web';
+    var ibuttonID = (bloc > 0 ? loc.substr(bloc + 1) : null);
+    function loader() {
+      /*var loader = thetr.getBaseLoader('jscore/');
+      loader.addFiles([
+          'touchscreen.js',
+          'displays.js',
+          'screenlayout.js',
+          'dataStore.js'
+        ]);
+        
+      thetr.event.listen({
+        on: loader,
+        action: 'load',
+        handler: loaded
+        });
+      loader.load();*/
+      loaded();
+    }
+    
+    function loaded() {
+      CSH.runTouch();
+      if (ibuttonID) {
+        ibutton_recieved(ibuttonID);
+      }
+    }
+  </script>
+</head>
+<body onload="loader()" onmousedown="return false;">
+  
+</body>
+</html>
