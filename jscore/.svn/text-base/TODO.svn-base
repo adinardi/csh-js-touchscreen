@@ -1,3 +1,0 @@
-- Adapt TaskList to be Table. Table is everything, includes setting rowcount. No refreshdisplay. Add setCellContent from current Table.
-   - Create LiveTable/DynamicTable which can have a dataSource and dynamically update from that.
-   - Create LiveEditableTable? Or just have editing as part of LiveTable. Regardless, have setting on column to enable editing.
